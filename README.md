@@ -1,5 +1,7 @@
 # 智辉电商全域运营数据分析平台
 
+> 仓库地址：https://github.com/hj20041003/zhihui-ecommerce-platform
+
 基于 **Spring Cloud 微服务** 的电商全域运营数据分析平台演示项目。
 
 ## 技术栈
