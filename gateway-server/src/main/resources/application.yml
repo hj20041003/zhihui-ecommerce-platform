@@ -32,7 +32,7 @@ spring:
 
 # 与 auth-service 保持一致；生产环境必须外部化（环境变量/配置中心）
 jwt:
-  secret: zhihui-demo-jwt-secret-key-change-me-in-production-0123456789abcdef
+  secret: ${JWT_SECRET:zhihui-demo-jwt-secret-key-change-me-in-production-0123456789abcdef}
 
 eureka:
   client:

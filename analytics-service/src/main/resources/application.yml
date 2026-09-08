@@ -8,7 +8,7 @@ spring:
     # 生产环境请改用环境变量注入：${DB_URL} / ${DB_USERNAME} / ${DB_PASSWORD}
     url: jdbc:mysql://localhost:3306/zhihui_mall?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8
     username: root
-    password: "1234"
+    password: ${DB_PASSWORD:1234}
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
