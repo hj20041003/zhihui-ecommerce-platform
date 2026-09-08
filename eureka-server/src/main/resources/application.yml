@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    # 注册中心自身不注册、不拉取
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    # 演示环境关闭自我保护，节点下线更快感知
+    enable-self-preservation: false
+
+logging:
+  level:
+    com.netflix: WARN

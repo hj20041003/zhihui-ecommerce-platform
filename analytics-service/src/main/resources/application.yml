@@ -1,0 +1,53 @@
+server:
+  port: 8102
+
+spring:
+  application:
+    name: analytics-service
+  datasource:
+    # 生产环境请改用环境变量注入：${DB_URL} / ${DB_USERNAME} / ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/zhihui_mall?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8
+    username: root
+    password: "1234"
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+  data:
+    redis:
+      # 生产环境请改用环境变量注入：${REDIS_HOST} / ${REDIS_PORT} / ${REDIS_PASSWORD}
+      host: localhost
+      port: 6379
+      timeout: 2s
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          min-idle: 1
+
+# 聚合指标缓存 TTL（秒）：读多写少，60s 足够演示，生产按业务调整
+cache:
+  ttl-seconds: 60
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.zhihui.analytics: INFO
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000

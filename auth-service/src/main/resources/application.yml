@@ -1,0 +1,36 @@
+server:
+  port: 8103
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    # 生产环境请改用环境变量注入：${DB_URL} / ${DB_USERNAME} / ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/zhihui_mall?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8
+    username: root
+    password: "1234"
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+
+# JWT 配置：secret 至少 32 字节；生产环境必须外部化（环境变量/配置中心）
+jwt:
+  secret: zhihui-demo-jwt-secret-key-change-me-in-production-0123456789abcdef
+  access-ttl-seconds: 1800
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.zhihui.auth: INFO
